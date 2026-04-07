@@ -171,15 +171,34 @@
       }
     }
 
+    // Fonction pour "déverrouiller" l'audio sur mobile
+    function unlockAudio() {
+      if (isReady) {
+        const silent = new SpeechSynthesisUtterance("");
+        silent.volume = 0;
+        window.speechSynthesis.speak(silent);
+        
+        // Nettoyage des écouteurs une fois déverrouillé
+        window.removeEventListener('touchstart', unlockAudio);
+        window.removeEventListener('mousedown', unlockAudio);
+        console.log("Audio unlocked for mobile");
+      }
+    }
+
     // Patikrinti kalbos sintezę
     window.onload = () => {
       if ('speechSynthesis' in window) {
         isReady = true;
         loadVoices();
+        
         // Certaines navigations chargent les voix un peu plus tard
         if (speechSynthesis.onvoiceschanged !== undefined) {
           speechSynthesis.onvoiceschanged = loadVoices;
         }
+
+        // Ajouter les écouteurs pour déverrouiller l'audio au premier geste
+        window.addEventListener('touchstart', unlockAudio, { passive: true });
+        window.addEventListener('mousedown', unlockAudio);
       } else {
         document.getElementById('warning').classList.remove('hidden');
       }
@@ -203,9 +222,12 @@
 
       // Paleisti garsą prancūzų kalba
       if (isReady) {
-        window.speechSynthesis.cancel();
+        // On annule ce qui est en cours seulement si nécessaire
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+        }
 
-        // On lit seulement la lettre
+        // On crée l'énonciation
         const textToSpeak = item.letter;
         const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
