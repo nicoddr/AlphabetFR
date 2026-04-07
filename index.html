@@ -154,6 +154,7 @@
     ];
 
     let isReady = false;
+    let isUnlocked = false;
     let preferredVoice = null;
 
     // Chercher et sélectionner la voix la plus naturelle disponible
@@ -173,15 +174,17 @@
 
     // Fonction pour "déverrouiller" l'audio sur mobile
     function unlockAudio() {
-      if (isReady) {
-        const silent = new SpeechSynthesisUtterance("");
+      if (isReady && !isUnlocked) {
+        isUnlocked = true;
+        const silent = new SpeechSynthesisUtterance(" ");
         silent.volume = 0;
         window.speechSynthesis.speak(silent);
         
         // Nettoyage des écouteurs une fois déverrouillé
         window.removeEventListener('touchstart', unlockAudio);
         window.removeEventListener('mousedown', unlockAudio);
-        console.log("Audio unlocked for mobile");
+        window.removeEventListener('click', unlockAudio);
+        console.log("Audio unlocked");
       }
     }
 
@@ -199,6 +202,7 @@
         // Ajouter les écouteurs pour déverrouiller l'audio au premier geste
         window.addEventListener('touchstart', unlockAudio, { passive: true });
         window.addEventListener('mousedown', unlockAudio);
+        window.addEventListener('click', unlockAudio);
       } else {
         document.getElementById('warning').classList.remove('hidden');
       }
@@ -228,7 +232,8 @@
         }
 
         // On crée l'énonciation
-        const textToSpeak = item.letter;
+        // Utiliser toLowerCase() évite que iOS dise "majuscule"
+        const textToSpeak = item.letter.toLowerCase();
         const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
         utterance.lang = 'fr-FR';
