@@ -36,7 +36,7 @@ Chaque langue est associée à son drapeau, son code de locale de synthèse voca
 | 🇮🇱 | **Hébreu** | `he-IL` | Prononciation documentée ci-dessous. |
 | 🇮🇩 | **Indonésien** | `id-ID` | - |
 | 🇮🇹 | **Italien** | `it-IT` | - |
-| 🇯🇵 | **Japonais** | `ja-JP` | Lettre L modifiée pour : Lampe (ランプ / 💡). Prononciation documentée. |
+| 🇯🇵 | **Japonais** | `ja-JP` | Prononciation documentée ci-dessous. |
 | 🇰🇿 | **Kazakh** | `kk-KZ` | Prononciation documentée ci-dessous. |
 | 🇰🇭 | **Khmer (Cambodge)** | `km-KH` | Prononciation documentée ci-dessous. |
 | 🇷🇼 | **Kinyarwanda (Rwanda)** | `rw-RW` | - |
