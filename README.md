@@ -49,7 +49,7 @@ Chaque langue est associée à son drapeau, son code de locale de synthèse voca
 | 🇲🇰 | **Macédonien** | `mk-MK` | Prononciation documentée ci-dessous. |
 | 🇲🇾 | **Malais (Singapour / Malaisie)** | `ms-MY` | - |
 | 🇲🇬 | **Malgache (Madagascar)** | `mg-MG` | - |
-| 🇨🇳 | **Mandarin (Chine)** | `zh-CN` | Utilise les caractères à la place du pinyin. Pinyin documenté ci-dessous. |
+| 🇨🇳 | **Mandarin (Chine)** | `zh-CN` | Prononciation documentée ci-dessous. |
 | 🇲🇪 | **Monténégrin** | `sr-ME` | - |
 | 🇳🇿 | **Māori (Nouvelle-Zélande)** | `mi-NZ` | - |
 | 🇳🇴 | **Norvégien** | `no-NO` | - |
